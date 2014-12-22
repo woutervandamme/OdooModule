@@ -9,13 +9,41 @@
                     <field name="xx_delivery_date"/>
                     <field name="xx_warranty_period"/>
                     <field name="xx_delivery_method"/>
-                </field>
-                
+                </field>                
                 <xpath expr="//form//field[@name='client_order_ref']" position="after">
                     <field name="xx_payment_method"/>
                 </xpath>
             </field>
         </record>
+        
+         <record id="view_delivery_amount" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">           
+               <field name="amount_untaxed" position="after">
+                <field widget='monetary' options="{'currency_field': 'currency_id'}" name="xx_delivery_price"/>
+                </field>
+            </field>
+        </record>   
+                  
+        <record id="view_delivery_method_tree" model="ir.ui.view">
+            <field name="model">xx.delivery.method</field>
+            <field name="arch" type="xml">
+                <tree string="Delivery Methods">
+                    <field name="xx_delivery_name"/>
+                    <field name="xx_delivery_price"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_delivery_method" model="ir.actions.act_window">
+            <field name="name">Delivery methods</field>
+            <field name="res_model">xx.delivery.method</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="menu_delivery_method" action="action_delivery_method"
+             parent="base.menu_base_config"/>
         
         <record id="view_payment_method_tree" model="ir.ui.view">
             <field name="model">xx.payment.method</field>
@@ -36,6 +64,7 @@
         
         <menuitem id="menu_payment_method" action="action_payment_method"
              parent="base.menu_base_config"/>
+             
 
     </data>
 </openerp>
