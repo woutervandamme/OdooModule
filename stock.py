@@ -28,6 +28,7 @@ class StockMove(osv.Model):
         else:
             move = self.browse(cr, uid, move_ids, context=context)[0]
             values = {
+                'xx_delivery_method' : move.procurement_id.sale_line_id.order_id.xx_delivery_method.id,
                 'xx_delivery_date': move.procurement_id.sale_line_id.order_id.xx_delivery_date,
                 'xx_payment_method': move.procurement_id.sale_line_id.order_id.xx_payment_method.id,
                 'xx_warranty_period': move.procurement_id.sale_line_id.order_id.xx_warranty_period.id,
