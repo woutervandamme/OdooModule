@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="client_order_ref" position="after">
+                    <field name="xx_delivery_date"/>
+                    <field name="xx_warranty_period"/>
+                    <field name="xx_delivery_method"/>
+                </field>
+                
+                <xpath expr="//form//field[@name='client_order_ref']" position="after">
+                    <field name="xx_payment_method"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_payment_method_tree" model="ir.ui.view">
+            <field name="model">xx.payment.method</field>
+            <field name="arch" type="xml">
+                <tree string="Payment methods">
+                    <field name="name"/>
+                    <field name="writeoff"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_payment_method" model="ir.actions.act_window">
+            <field name="name">Payment methods</field>
+            <field name="res_model">xx.payment.method</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem id="menu_payment_method" action="action_payment_method"
+             parent="base.menu_base_config"/>
+
+    </data>
+</openerp>
