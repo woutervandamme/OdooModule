@@ -20,4 +20,6 @@ class StockPicking(osv.Model):
                                              string='Payment method'),
         'xx_warranty_period': fields.many2one('xx.warranty.period',
                                               string='Warranty period')
+        #'xx_delivery_method': fields.many2one('xx.delivery.method',
+        #                                      string='Delivery method')
     }
