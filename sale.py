@@ -20,10 +20,20 @@ class SaleOrder(osv.Model):
                                              string='Payment method'),
         'xx_warranty_period': fields.many2one('xx.warranty.period',
                                               string='Warranty period'),
-        'xx_delivery_method': fields.selection([('BPost', 'BPost'),
-                                              ('cash', 'Cash')],
+        'xx_delivery_method': fields.many2one('xx.delivery.method',
                                               string='Delivery method'),
     }
+    
+class DeliveryMethod(osv.Model):
+    _name = 'xx.delivery.method'
+    
+    _columns = {
+        'Company': fields.char(size=128, string='Company'),
+        'amount': fields.float(string='Amount'),
+        'sale_ids': fields.one2many('sale.order', 'xx_delivery_method',
+                                    string='Sale orders')        
+    }
+    
     
 class PaymentMethod(osv.Model):
     _name = 'xx.payment.method'
