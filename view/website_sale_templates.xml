@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    <template id="checkout" name="Delivery Costs" inherit_id="website_sale.checkout">
+        <xpath expr="//div[@class='form-group col-lg-12']" position="after">
+            <tr class="text-muted" id="order_delivery">
+                <td><abbr title="Delivery will be updated after choosing a new delivery method">Delivery:</abbr></td>
+                <td class="text-right">
+                    <span t-field="website_sale_order.amount_delivery" t-field-options='{
+                        "widget": "monetary",
+                        "display_currency": "website.pricelist_id.currency_id"
+                    }'/>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+
+    </data>
+    </openerp>
+    

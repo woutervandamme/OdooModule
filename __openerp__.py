@@ -6,12 +6,13 @@
     'category' : 'KH Leuven',
     'description' : """
 """,
-    'depends' : ['sale', 'stock', 'account'],
+    'depends' : ['sale', 'stock', 'account','website_sale'],
     'data': [
         'view/sale.xml',
         'view/picking.xml',
         'view/warranty.xml',
-        'view/templates.xml'
+        'view/website_sale_templates.xml',
+        'view/account.xml'
     ],
     'installable': True,
     'auto_install': False,
