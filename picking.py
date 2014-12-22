@@ -13,13 +13,12 @@ class StockPicking(osv.Model):
     
     _columns = {
         'xx_delivery_date': fields.date(string='Delivery date'),
-        #'xx_payment_method': fields.selection([('visa', 'Visa'),
-        #                                       ('cash', 'Cash')],
-        #                                      string='Payment method'),
+
         'xx_payment_method': fields.many2one('xx.payment.method',
                                              string='Payment method'),
         'xx_warranty_period': fields.many2one('xx.warranty.period',
-                                              string='Warranty period')
-        #'xx_delivery_method': fields.many2one('xx.delivery.method',
-        #                                      string='Delivery method')
+                                              string='Warranty period'),
+        'xx_delivery_method' : fields.many2one('xx.delivery.method',
+                                               string='Delivery method'),
+
     }
